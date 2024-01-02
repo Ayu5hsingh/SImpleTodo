@@ -1,13 +1,10 @@
 require('dotenv').config()
 const express = require("express");
-const bodyParser = require("body-parser");
 const { todoValidator, updateTodoValidator } = require("./types");
 const { todo } = require("./db");
 const app = express();
 
-app.use(express)
-app.use(express.json)
-app.use(bodyParser)
+app.use(express.json())
 
 app.post("/todos", async (req, res) => {
     const createPayLoad = req.body;
@@ -20,8 +17,8 @@ app.post("/todos", async (req, res) => {
         )
         return
     }
-    // put something in mongodb
-    await todo.create.create({
+// putting todos in db
+    await todo.create({
         title: createPayLoad.title,
         description: createPayLoad.description,
         completed: false
@@ -39,7 +36,7 @@ app.get("/todos", async (req, res) => {
 
 
 
-app.put("/completed", async(req, res) => {
+app.put("/completed", async (req, res) => {
     const updatedPayLoad = req.body;
     const parsedPayLoad = updateTodoValidator.safeParse(updatedPayLoad);
     if (!parsedPayLoad.success) {
@@ -50,7 +47,7 @@ app.put("/completed", async(req, res) => {
     }
     await todo.update({
         _id: req.body.id,
-        completed: falsegit 
+        completed: false
     }, {
         completed: true
     })
@@ -65,6 +62,6 @@ app.get('*', (req, res) => {
 })
 
 
-app.listen(process.env.PORT,()=>{
-    console.log("server is up and running");
+app.listen(process.env.PORT, () => {
+    console.log("server is up and running on ", process.env.PORT);
 })

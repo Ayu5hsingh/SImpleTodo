@@ -1,9 +1,13 @@
 // importing .env 
 require('dotenv').config();
 const mongoose = require("mongoose");
-const { boolean } = require("zod");
-
-mongoose.connect(process.env.mongodbUrl);
+require("zod");
+try{
+    mongoose.connect(process.env.mongodbUrl);
+}
+catch(e){
+    console.log("error connecting to db")
+}
 const todoSchema = mongoose.Schema({
     title: String,
     description: String,
