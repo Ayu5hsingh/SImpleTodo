@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require("express");
 const bodyParser = require("body-parser");
 const { todoValidator, updateTodoValidator } = require("./types");
@@ -64,6 +65,6 @@ app.get('*', (req, res) => {
 })
 
 
-app.listen(3000,()=>{
+app.listen(process.env.PORT,()=>{
     console.log("server is up and running");
 })
