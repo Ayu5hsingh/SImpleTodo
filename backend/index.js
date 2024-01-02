@@ -21,7 +21,6 @@ app.post("/todos", async (req, res) => {
     await todo.create({
         title: createPayLoad.title,
         description: createPayLoad.description,
-        completed: false
     })
     res.json({
         msg: "Todo created"
