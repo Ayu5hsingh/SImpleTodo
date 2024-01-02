@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const { todoSchema } = require("./types");
+const { todoValidator, updateTodoValidator } = require("./types");
 
 
 app.use(express)
@@ -9,8 +9,8 @@ app.use(bodyParser)
 
 app.post("/todos", (req, res) => {
     const createPayLoad = req.body;
-    const parsedPayLoad = todoSchema.safeParse(createPayload)
-    if (!parsedPayLoad) {
+    const parsedPayLoad = todoValidator.safeParse(createPayLoad);
+    if (!parsedPayLoad.success) {
         res.status(411).json(
             {
                 msg: "You have sent wrong input"
@@ -18,7 +18,7 @@ app.post("/todos", (req, res) => {
         )
         return
     }
-
+    // put something in mongodb
 })
 
 
@@ -28,8 +28,15 @@ app.get("/todos", (req, res) => {
 
 
 
-app.put("/todos", (req, res) => {
-
+app.put("/completed", (req, res) => {
+    const updatedPayLoad = req.body;
+    const parsedPayLoad = updateTodoValidator.safeParse(updatedPayLoad);
+    if (!parsedPayLoad.success) {
+        res.status(411).json({
+            msg: " You have sent the wrong input"
+        })
+        return
+    }
 })
 
 app.get('*', (req, res) => {
