@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const { todoValidator, updateTodoValidator } = require("./types");
 const { todo } = require("./db");
+const app = express();
 
 app.use(express)
 app.use(express.json)
@@ -62,3 +63,7 @@ app.get('*', (req, res) => {
     )
 })
 
+
+app.listen(3000,()=>{
+    console.log("server is up and running");
+})
