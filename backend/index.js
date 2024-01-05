@@ -1,9 +1,11 @@
-require('dotenv').config()
+const cors = require("cors");
+require('dotenv').config({path : '/home/ayush/cohort/projects/e2eTOdo/.env'})
 const express = require("express");
 const { todoValidator, updateTodoValidator } = require("./types");
 const { todo } = require("./db");
 const app = express();
 
+app.use(cors())
 app.use(express.json())
 
 app.post("/todos", async (req, res) => {

@@ -1,8 +1,15 @@
-export function Todos() {
+export function Todos({prop}) {
     return (
         <div>
-            <h1> Go to the gym</h1>
-            <h2> Gym jao bhai</h2>
+            {prop.map(function(t){
+                return (
+                    <div>
+                        <h1> {t.title} </h1>
+                        <h2> {t.description}</h2>
+                    </div>
+                )
+            })}
         </div>
     )
 }
+
