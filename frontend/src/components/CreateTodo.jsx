@@ -17,8 +17,8 @@ export function CreateTodo() {
     return (
         // work on this and make the frontend send request to the backend.
         <div>
-            <input id="title" type="text" value={title} placeholder="Title" onChange={(e)=>{setTitle(e.target.value)}} /> <br />
-            <input id="description" type="text" value={description} placeholder="Description" onChange={(e)=>{setDescription(e.target.value)}}/> <br />
+            <input id="title" type="text"  placeholder="Title" onChange={(e)=>{setTitle(e.target.value)}} /> <br />
+            <input id="description" type="text"  placeholder="Description" onChange={(e)=>{setDescription(e.target.value)}}/> <br />
             <button onClick={sendData}>Add Toddo</button>
         </div>
     )
