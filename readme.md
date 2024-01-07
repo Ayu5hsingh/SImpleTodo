@@ -9,3 +9,7 @@ This project contains a simple TODO  application it has following features.
 
   Fututre Plans
   - Adding user authentication
+
+
+Learning: 
+- MUI
