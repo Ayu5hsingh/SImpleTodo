@@ -4,7 +4,6 @@ import viteLogo from '/vite.svg'
 import { Todos } from './components/Todos'
 import CreateTodo from './components/CreateTodo'
 import WrapperCard from './components/WrapperCard'
-import VerticalDividers from './components/VerticalDividers'
 
 function App() {
   const [state , setTodo] = useState([])
@@ -17,7 +16,6 @@ function App() {
   <div>
     <CreateTodo />
     <Todos prop={state} />
-    <VerticalDividers prop={state}/>
   </div>
   )
 }
