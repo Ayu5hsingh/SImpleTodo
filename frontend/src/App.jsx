@@ -3,7 +3,8 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import { Todos } from './components/Todos'
 import CreateTodo from './components/CreateTodo'
-import WrapperCard from './components/WrapperCard'
+import './components/components.css'
+
 
 function App() {
   const [state, setTodo] = useState([])
@@ -22,11 +23,13 @@ function App() {
       }
     }
     fetchData()
-  })
+  },[state])
 
   return (
-    <div>
-      <CreateTodo />
+    <div className='page'>
+      <div className='inputCard'>
+        <CreateTodo  />
+      </div>
       <Todos prop={state} />
     </div>
   )

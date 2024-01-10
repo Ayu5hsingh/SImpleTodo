@@ -1,8 +1,9 @@
-export function Todos({prop}) {
+import Card from 'react-bootstrap/Card';
+export function Todos({ prop }) {
 
     return (
         <div>
-            {prop.map(function(t){
+            {prop.map(function (t) {
                 return (
                     <div>
                         <h1> {t.title} </h1>
@@ -13,4 +14,5 @@ export function Todos({prop}) {
         </div>
     )
 }
+
 
